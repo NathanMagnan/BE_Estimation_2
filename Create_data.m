@@ -13,6 +13,7 @@ s = size(t);
 N = s(1);
 power_mean_y = (y.' * y) / N;
 sigma = 0.1 * power_mean_y^(1/2);
+%sigma = 0;
 noise = random('Normal', 0, sigma, N, 1);
 x0 = x0 + noise;
 x1 = x1 + noise;

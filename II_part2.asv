@@ -50,12 +50,4 @@ x_f_1 = abs(G' * x1) / N;
 % ylabel("signal x^{\^}_0");
 
 %% Plot the spectral window
-Win = abs(G' * ones(N, 1) / N);
-
-figure(2);
-xline(f_th(1), 'k');
-plot(freq_grid, Win);
-xlim([-10 10]);
-title("Spectral window in the irregular sampling case");
-xlabel("frequency f");
-ylabel("signal");
+W
