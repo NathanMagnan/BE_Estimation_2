@@ -1,0 +1,13 @@
+%% create the data set
+Create_data;
+
+%% create f vector from -K to +K
+f_th_1 = f_th;
+f_th_2 = - fliplr(f_th);
+f = [f_th_2 [0] f_th_1];
+
+%% create matrix W
+W = exp(2 * pi * j * t * f);
+
+%% compute ML estimator
+c_ML = invert(W' * W)
