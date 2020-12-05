@@ -1,13 +1,13 @@
-function [c,indf] = omp(dat,G,N,M,sigma)
+function [c,indf,res] = omp(dat,G,N,M,sigma)
     % Initialisation
     res = dat;
     indf = [];
-    c = zeros(2*M+1);
+    c = zeros(2*M+1,1);
     
     T = norm(res)^2/sigma^2;
     tau = chisqq(0.95,N);
     
-    choix_l = zeros(2*M+1);
+    display(tau); % Affichage
     
     % Iterations
 
@@ -24,10 +24,12 @@ function [c,indf] = omp(dat,G,N,M,sigma)
                 lopt=l;
             end
         end
+        disp((lopt-(M+1))*50/M); % Affichage frequence choisie
         indf = unique([ indf(:) ; lopt ]);
         c(indf) = (G(:,indf)'*G(:,indf)) \ (G(:,indf)'*dat);
         res = dat - G(:,indf)*c(indf);
         
         T = norm(res)^2/sigma^2;
     end
+
 end

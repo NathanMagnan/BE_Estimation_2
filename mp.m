@@ -1,12 +1,12 @@
-function [c,indf] = mp(dat,G,N,M,sigma)
+function [c,indf,res] = mp(dat,G,N,M,sigma)
     % Initialisation
     res = dat;
     indf = [];
-    c = zeros(2*M+1);
+    c = zeros(2*M+1,1);
     
     T = norm(res)^2/sigma^2;
     tau = chisqq(0.95,N);
-    
+    display(tau); % Affichage
     % Iterations
 
     while (T>tau)
@@ -22,11 +22,12 @@ function [c,indf] = mp(dat,G,N,M,sigma)
                 lopt=l;
             end
         end
-  
+        disp((lopt-(M+1))*50/M); % Affichage frequence choisie
         indf = unique([ indf(:) ; lopt ]);
         c(lopt) = c(lopt) + mopt/N;
         res = res - mopt/N * G(:,lopt);
         
-        T = norm(res)^2/sigma^2;
+        T = norm(res)^2/sigma^2; 
     end
+    display(suite_crit);
 end

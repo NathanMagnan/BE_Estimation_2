@@ -16,19 +16,19 @@ G = exp(2 * pi * 1i * t * freq_grid);
 
 %% Matching Pursuit (MP)
 
-[c0_MP,ind0_MP] = mp(x0,G,N,M,sigma);
+[c0_MP,ind0_MP,res0_MP] = mp(x0,G,N,M,sigma);
 freq0_MP = freq_grid(ind0_MP);
 
-[c1_MP,ind1_MP] = mp(x1,G,N,M,sigma);
+[c1_MP,ind1_MP,res1_MP] = mp(x1,G,N,M,sigma);
 freq1_MP = freq_grid(ind1_MP);
 
 
 %% Orthogonal Matching Pursuit (OMP)
 
-[c0_OMP,ind0_OMP] = omp(x0,G,N,M,sigma);
+[c0_OMP,ind0_OMP,res0_OMP] = omp(x0,G,N,M,sigma);
 freq0_OMP = freq_grid(ind0_OMP);
 
-[c1_OMP,ind1_OMP] = omp(x1,G,N,M,sigma);
+[c1_OMP,ind1_OMP,res1_OMP] = omp(x1,G,N,M,sigma);
 freq1f_OMP = freq_grid(ind1_OMP);
 
 
