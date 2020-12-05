@@ -11,9 +11,13 @@ end
 %% add the noise
 s = size(t);
 N = s(1);
-power_mean_y = (y.' * y) / N;
-sigma = 0.1 * power_mean_y^(1/2);
-%sigma = 0;
-noise = random('Normal', 0, sigma, N, 1);
-x0 = x0 + noise;
-x1 = x1 + noise;
+power_mean_y_0 = (x0.' * x0) / N;
+power_mean_y_1 = (x1.' * x1) / N;
+%sigma_0 = 0;
+%sigma_1 = 0;
+sigma_0 = 0.1 * power_mean_y_0^(1/2);
+sigma_1 = 0.1 * power_mean_y_1^(1/2);
+noise_0 = random('Normal', 0, sigma_0, N, 1);
+noise_1 = random('Normal', 0, sigma_1, N, 1);
+x0 = x0 + noise_0;
+x1 = x1 + noise_1;

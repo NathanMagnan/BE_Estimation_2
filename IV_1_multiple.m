@@ -14,7 +14,7 @@ freq_grid = nu_max * (-m:m) / m;
 G = exp(2 * pi * j * t * freq_grid);
 
 %% choose parameters
-lambda = 0.5;
+lambda = 3;
 n_it_max = 10^2;
 
 %% solver and residuals
@@ -36,6 +36,11 @@ ylabel("residuals r");
 %% Estimated spectrum
 figure(2)
 plot(freq_grid, abs(c1));
+xline(31.012);
+xline(32.675);
+xline(33.283);
+xline(33.525);
+xline(35.609);
 xlim([25 45]);
 title("Estimated spectrum : multiple frequency signal");
 xlabel("frequency f");
