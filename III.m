@@ -16,31 +16,32 @@ G = exp(2 * pi * 1i * t * freq_grid);
 
 %% Matching Pursuit (MP)
 
-[c0_MP,ind0_MP,res0_MP] = mp(x0,G,N,M,sigma);
+[c0_MP,ind0_MP,res0_MP] = mp(x0,G,N,M,sigma_0);
 freq0_MP = freq_grid(ind0_MP);
 
-[c1_MP,ind1_MP,res1_MP] = mp(x1,G,N,M,sigma);
+[c1_MP,ind1_MP,res1_MP] = mp(x1,G,N,M,sigma_1);
 freq1_MP = freq_grid(ind1_MP);
 
 
 %% Orthogonal Matching Pursuit (OMP)
 
-[c0_OMP,ind0_OMP,res0_OMP] = omp(x0,G,N,M,sigma);
+[c0_OMP,ind0_OMP,res0_OMP] = omp(x0,G,N,M,sigma_0);
 freq0_OMP = freq_grid(ind0_OMP);
 
-[c1_OMP,ind1_OMP,res1_OMP] = omp(x1,G,N,M,sigma);
+[c1_OMP,ind1_OMP,res1_OMP] = omp(x1,G,N,M,sigma_1);
 freq1f_OMP = freq_grid(ind1_OMP);
 
 
 %% Orthogonal Least Square (OLS)
 % Parameters
 tau = chisqq(0.95,N);
-test = sigma^2 *tau; 
+test0 = sigma_0^2 *tau; 
+test1 = sigma_1^2 *tau; 
 
-[c0_OLS,ind0_OLS] = ols(G,x0,Inf,test);
+[c0_OLS,ind0_OLS] = ols(G,x0,Inf,test0);
 freq0_OLS = freq_grid(ind0_OLS);
 
-[c1_OLS,ind1_OLS] = ols(G,x1,Inf,test);
+[c1_OLS,ind1_OLS] = ols(G,x1,Inf,test1);
 freq1_OLS = freq_grid(ind1_OLS);
 
 %% Amplitudes

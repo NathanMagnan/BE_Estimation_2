@@ -31,5 +31,4 @@ function [c,indf,res] = omp(dat,G,N,M,sigma)
         
         T = norm(res)^2/sigma^2;
     end
-
 end
